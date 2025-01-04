@@ -68,7 +68,7 @@ const Login = () => {
 							type="text"
 							onChange={(e) => setName(e.target.value)}
 							value={name}
-							placeholder="Gyan Pratap Singh"
+							placeholder="Jhon Doe"
 							required
 						/>
 					</div>
@@ -80,7 +80,7 @@ const Login = () => {
 						type="email"
 						onChange={(e) => setEmail(e.target.value)}
 						value={email}
-						placeholder="gps.96169@gmail.com"
+						placeholder="xyz@gmail.com"
 						required
 					/>
 				</div>

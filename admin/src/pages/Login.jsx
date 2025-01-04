@@ -56,7 +56,7 @@ const Login = () => {
 				<p className="text-2xl font-semibold m-auto"><span className="text-primary">{state}</span> Login </p>
                 <div className="w-full">
                     <p>Email</p>
-                    <input onChange={(e)=>setEmail(e.target.value)} value={email} className="border border-[#dadada] rounded w-full p-2 mt-1" placeholder="gps@gmail.com" type="email" required />
+                    <input onChange={(e)=>setEmail(e.target.value)} value={email} className="border border-[#dadada] rounded w-full p-2 mt-1" placeholder="xyz@gmail.com" type="email" required />
                 </div>
                 <div className="w-full">
                     <p>Password</p>

@@ -34,22 +34,23 @@ const doctorsList = async(req,res) => {
 const loginDoctor = async(req,res) => {
 	try {
 		const {email, password} = req.body
+		// console.log(req.body)
 		const doctor = await doctorModel.findOne({email})
 		if(!doctor){
-			res.json({success:false, message:"Invalid credentials"})
+			return res.json({success:false, message:"Invalid credentials"})
 		}
 		
 		const isMatch = await bcrypt.compare(password, doctor.password)
 		if(isMatch){
 			const token = jwt.sign({id:doctor._id},process.env.JWT_SECRET)
-			res.json({success:true,token})
-		}
+			return res.json({success:true,token})
+		} 
 		else{
-			res.json({success:false, message:"Invalid credentials"})
+			return res.json({success:false, message:"Invalid credentials"})
 		}
 	} catch (error) {
 		console.error(error);
-		res.json({ success: false, message: error.message });
+		return res.json({ success: false, message: error.message });
 	}
 }
 

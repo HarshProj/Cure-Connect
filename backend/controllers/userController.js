@@ -8,7 +8,7 @@ import appointmentModel from "../models/appointmentModel.js";
 import razorpay from 'razorpay'
 // api to resister user
 
-const registerUser = async (req, res) => {
+const registerUser = async (req, res) => { 
 	try {
 		const { name, email, password } = req.body;
 		if (!name || !email || !password) {
@@ -22,7 +22,7 @@ const registerUser = async (req, res) => {
 				message: "Please enter a valid email!",
 			});
 		}
-
+		console.log(req.body)
 		// validating strong password
 		if (password.length < 8) {
 			return res.json({ success: false, message: "Enter a strong password!" });
@@ -50,16 +50,17 @@ const registerUser = async (req, res) => {
 
 // API for Login user
 const LoginUser = async (req, res) => {
-	try {
+	try { 
 		const { email, password } = req.body;
 		const user = await userModel.findOne({ email });
 
 		if (!user) {
 			return res.json({ success: false, message: "User doesn't exist!" });
 		}
-
+		
+		console.log(req.body)
 		const isMatch = await bcript.compare(password, user.password);
-		if (isMatch) {
+		if (isMatch) { 
 			const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
 			res.json({ success: true, token });
 		} else {
@@ -219,32 +220,32 @@ const cancelAppointment = async(req,res) =>{
 }
 
 
-const razorpayInstance = new razorpay({
-	key_id : process.env.RAZORPAY_KAY_ID,
-	key_secret : process.env.RAZORPAY_KAY_SECRET
-})
-// API to make payment of appointment uding razorpay
+// const razorpayInstance = new razorpay({
+// 	key_id : process.env.RAZORPAY_KAY_ID,
+// 	key_secret : process.env.RAZORPAY_KAY_SECRET
+// })
+// API to make payment of appointment using razorpay
 const paymentRazorpay = async(req,res)=>{
 	try {
-		const {appointmentId} = req.body
+	// 	const {appointmentId} = req.body
 
-	const appointmentData = await appointmentModel.findById(appointmentId)
-	if(!appointmentData || appointmentData.cancelled){
-		return res.json({success:false,message:"Appointment Cancelled or not found!"})
-	}
+	// const appointmentData = await appointmentModel.findById(appointmentId)
+	// if(!appointmentData || appointmentData.cancelled){
+	// 	return res.json({success:false,message:"Appointment Cancelled or not found!"})
+	// }
 
-		// creating options for razorpay payment
-		const options = {
-			amount : appointmentData.amount * 100,
-			currency: process.env.CURRENCY,
-			receipt :appointmentId
+	// 	// creating options for razorpay payment
+	// 	const options = {
+	// 		amount : appointmentData.amount * 100,
+	// 		currency: process.env.CURRENCY,
+	// 		receipt :appointmentId
 
-		}
+	// 	}
 
 
-		// creation of an order 
-		const order = await razorpayInstance.orders.create(options);
-		res.json({success:true,order});
+	// 	// creation of an order 
+	// 	const order = await razorpayInstance.orders.create(options);
+	// 	res.json({success:true,order});
 	} catch (error) {
 		console.error(error);
 		res.json({ success: false, message: error.message });

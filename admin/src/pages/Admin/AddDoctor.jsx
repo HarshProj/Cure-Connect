@@ -14,6 +14,7 @@ const AddDoctor = () => {
 	const [speciality, setSpeciality] = useState("General physician");
 	const [degree, setDegree] = useState("");
 	const [address1, setAddress1] = useState("");
+	const[isloading,SetLoading]=useState(false);
 	const [address2, setAddress2] = useState("");
 
     const {backendUrl, aToken} = useContext(AdminContext);
@@ -23,12 +24,12 @@ const AddDoctor = () => {
 
     const onSubmitHandler = async (event) => {
         event.preventDefault();
-
         try {
-            if(!docImg){
-                return toast.error('Image Not Selected')
+			if(!docImg){
+				return toast.error('Image Not Selected')
             }
-
+			
+			SetLoading(true);
 
             const formData = new FormData();
 
@@ -68,7 +69,7 @@ const AddDoctor = () => {
             else{
                 toast.error(data.message)
             }
-
+			SetLoading(false)
 
         } catch (error) {
             toast.error(error.message)
@@ -76,8 +77,8 @@ const AddDoctor = () => {
         }
     }
 
-	return (
-		<form onSubmit={onSubmitHandler} className="m-5 w-full">
+	return (<>
+		{isloading?<h1 className="w-full h-screen text-center">Loading...</h1>:<form onSubmit={onSubmitHandler} className="m-5 w-full">
 			<p className="mb-3 text-lg font-medium">Add Doctor</p>
 			<div className="bg-white px-8 py-8 border rounded w-full max-w-4xl max-h-[80vh] overflow-y-scroll">
 				<div className="flex items-center gap-4 mb-8 text-gray-500">
@@ -86,7 +87,7 @@ const AddDoctor = () => {
 							className="w-16  bg-gray-100 rounded-full cursor-pointer"
 							src={docImg ? URL.createObjectURL(docImg) : assets.upload_area}
 							alt=""
-						/>
+							/>
 					</label>
 					<input onChange={(e)=> setDocImg(e.target.files[0])} type="file" id="doc-img" hidden />
 					<p>
@@ -102,7 +103,7 @@ const AddDoctor = () => {
 								type="text"
 								placeholder="Your Name"
 								required
-							/>
+								/>
 						</div>
 
 						<div className="flex-1 flex flex-col gap-1">
@@ -112,7 +113,7 @@ const AddDoctor = () => {
 								type="email"
 								placeholder="Your email"
 								required
-							/>
+								/>
 						</div>
 						<div className="flex-1 flex flex-col gap-1">
 							<p>Doctor Password</p>
@@ -121,7 +122,7 @@ const AddDoctor = () => {
 								type="password"
 								placeholder="Password"
 								required
-							/>
+								/>
 						</div>
 
 						<div className="flex-1 flex flex-col gap-1">
@@ -181,13 +182,13 @@ const AddDoctor = () => {
 								type="text"
 								placeholder="address 1"
 								required
-							/>
+								/>
 							<input onChange={(e)=> setAddress2(e.target.value)} value={address2}
 								className="border rounded px-3 py-2"
 								type="text"
 								placeholder="address 2"
 								required
-							/>
+								/>
 						</div>
 					</div>
 				</div>
@@ -205,7 +206,8 @@ const AddDoctor = () => {
 					Add Doctor
 				</button>
 			</div>
-		</form>
+		</form>}
+						</>
 	);
 };
 

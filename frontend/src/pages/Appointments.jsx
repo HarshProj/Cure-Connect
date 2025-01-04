@@ -123,7 +123,7 @@ const Appointments = () => {
 
 	useEffect(() => {
 		if (docInfo) {
-			console.log(docSlots);
+			// console.log(docSlots);
 		}
 	}, [docSlots]);
 

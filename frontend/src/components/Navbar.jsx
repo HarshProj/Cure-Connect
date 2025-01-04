@@ -22,7 +22,7 @@ const Navbar = () => {
 				src={assets.logo_cure_connect_red}
 				alt=""
 			/>
-			<ul className="hidden md:flex items-start gap-5 font-medium">
+			<ul className="hidden md:flex items-start gap-5 font-medium z-50">
 				<NavLink to="/">
 					<li className="py-1">HOME</li>
 					<hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
