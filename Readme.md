@@ -78,6 +78,8 @@ To run the project locally, follow these steps:
 ## Appointment Booking Page
 ![image](https://github.com/user-attachments/assets/e2b328b0-50fb-4db8-a44d-b2a4f49873cd)
 
+## Admin Dashboard
+![image](https://github.com/user-attachments/assets/ed3dcf25-96c2-4385-937d-157c2e853988)
 
 ## Future Enhancements
 
