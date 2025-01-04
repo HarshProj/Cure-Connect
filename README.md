@@ -29,13 +29,13 @@ To run the project locally, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Gyanthakur/CureConnect.git
+   git clone https://github.com/HarshProj/Cure-Connect.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd CureConnect
+   cd Cure-Connect
    ```
 
 3. Install dependencies:
