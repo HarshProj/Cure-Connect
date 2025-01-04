@@ -73,11 +73,11 @@ To run the project locally, follow these steps:
 
 ## Top Doctors Page
 
-![image](https://github.com/user-attachments/assets/42cc2552-9d1b-45c9-8cb5-4e9cc10ea9ea)
+![image](https://github.com/user-attachments/assets/09653c68-078e-4660-b539-51fdc42f1b91)
 
 ## Appointment Booking Page
+![image](https://github.com/user-attachments/assets/e2b328b0-50fb-4db8-a44d-b2a4f49873cd)
 
-![image](https://github.com/user-attachments/assets/f979cd9d-ee89-4d13-886f-621ed0ad065d)
 
 ## Future Enhancements
 
